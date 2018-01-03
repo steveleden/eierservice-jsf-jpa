@@ -20,7 +20,7 @@ public class EntityManagerProviderBean implements Serializable {
 	private EntityManager em;
 
 	public EntityManagerProviderBean() {
-		//System.out.println("Creating EntityManagerProviderBean");
+		System.out.println("Creating EntityManagerProviderBean");
 	}
 	
 	public EntityManager getEntityManager () {
@@ -30,8 +30,10 @@ public class EntityManagerProviderBean implements Serializable {
 	
     @PreDestroy
     public void closeEm() {
-		System.out.println("EntityManagerProvider: Closing EntitManagerFactory...");
-		emf.close();
+    	if (emf.isOpen()) {
+			System.out.println("EntityManagerProvider: Closing EntitManagerFactory...");
+			emf.close();
+    	}
     }
 	
 }
