@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Bestellungen</title>
+</h:head> 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h2 class="w3-center">Liefertermin zu diesen Bestellungen best&auml;tigen</h2>
+		<h:form styleClass="w3-center">
+			<div class="w3-responsive">
+				<h:dataTable value="#{bestellungListeViewBean.bestellungListView}" var="bestellungItem"
+							 styleClass="datagrid" cellspacing="0">
+					<h:column>
+						<f:facet name="header">Liefertermin</f:facet>
+						<h:outputText value="#{bestellungItem.bestellung.liefertermin}">
+							<f:convertDateTime locale="de_CH" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/>
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Anzahl</f:facet>
+						#{bestellungItem.bestellung.anzahl}
+					</h:column>
+				<h:column>
+					<f:facet name="header">Kunde</f:facet>
+					<h:outputText value="#{bestellungItem.kunde.nachname}" style="margin: 5px"/>
+					<h:outputText value="#{bestellungItem.kunde.vorname}"  style="margin: 5px"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Kommentar</f:facet>
+					#{bestellungItem.bestellung.kommentar}
+				</h:column>			</h:dataTable>
+			</div>
+			<br />
+			<h:panelGroup style="margin: 50px 0px 0px 0px">
+				<h:outputLabel value="Best&auml;tigter Liefertermin:" />
+				<h:inputText value="#{bestellungViewBean.bestellungView.bestellung.lieferterminBestaetigt}" 
+							 converterMessage="Bitte g&uuml;ltiges Datum eingeben"
+							 styleClass="datepickerInputAbHeute"
+							 >
+					<f:convertDateTime locale="de_CH" pattern="E, dd.M.yyyy"  timeZone="#{globalBean.hostTimeZone}"/>
+				</h:inputText>
+			</h:panelGroup>
+			<br />
+			<h:messages styleClass="messages" layout="table"/>
+			<br />
+			<h:commandButton action="#{bestellungVerwaltungController.bestaetigenLiefertermin()}" value="Liefertermin best&auml;tigen"
+							 styleClass="normalButton"/>
+			<h:commandButton action="#{bestellungVerwaltungController.startBestellungBestaetigen()}" value="Abbrechen"
+							 styleClass="normalButton"/>
+		</h:form>
+	</ui:define>
+	
+	</ui:composition>
+</body> 
+</html>

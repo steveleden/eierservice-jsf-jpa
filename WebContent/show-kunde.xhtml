@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	Benutzer
+</h:head> 
+<body> 
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+		
+		<ui:define name="content">
+			<h:form>
+				<fieldset class="fieldset" >
+				<legend>Kundendaten erfassen</legend>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Nachname:" />
+					<h:inputText id="show_kunde_nachname"
+								 value="#{kundeViewBean.kundeView.kunde.nachname}" 
+								 required="true"
+								 requiredMessage="Nachnamen eingeben"/>
+					<h:panelGroup></h:panelGroup>
+					<h:outputLabel value="Vorname:" />
+					<h:inputText id="show_kunde_vorname"
+								 value="#{kundeViewBean.kundeView.kunde.vorname}" 
+								 required="true"
+								 requiredMessage="Vornamen eingeben"/>
+					<h:panelGroup></h:panelGroup>
+					<h:outputLabel value="Benutzername:" />
+					<h:panelGroup>
+						<h:dataTable value="#{kundeViewBean.kundeView.benutzerListe}" var="benutzerItem"
+									 cellspacing="0" cellpadding="0">
+							<h:column>
+								<h:inputText value="#{benutzerItem.benutzer.name}" disabled="true"/>
+							</h:column>
+						</h:dataTable>
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:commandButton action="#{kundenVerwaltungController.benutzerEntfernen()}" value="l&ouml;schen" 
+						 				 styleClass="normalButtonKlein"/>
+					</h:panelGroup>
+				</h:panelGrid>
+				</fieldset>
+				<br />
+				<div class="w3-center">
+					<h:messages styleClass="messages" layout="table"/>				
+					<h:commandButton action="#{kundenVerwaltungController.gotoBenutzerAuswaehlen()}" value="Benutzer zuordnen"
+							 		 styleClass="normalButton"/>
+					<h:commandButton action="#{kundenVerwaltungController.kundeSpeichern()}" value="Speichern" 
+							 		 styleClass="normalButton"/>
+					<h:commandButton  action="#{kundenVerwaltungController.kundeMutierenAbbrechen()}" value="Abbrechen" immediate="true"
+							 		  styleClass="normalButton"/>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

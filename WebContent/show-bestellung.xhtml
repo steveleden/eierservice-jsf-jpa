@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+
+<h:head> 
+</h:head> 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+
+	
+		<ui:define name="content">
+			<div class="w3-row" >
+				<div class="w3-half">
+				<h:form id="form_bestellung" >
+					<fieldset class="fieldset" >
+					
+						<c:choose>
+						<c:when test="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_ERFASSEN'}">
+							<legend>Bestellung erfassen</legend>
+						</c:when>
+						<c:when test="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+							<legend>Bestellung best&auml;tigen</legend>		
+						</c:when>
+						<c:when test="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_MUTIEREN'}">
+							<legend>Bestellung mutieren</legend>		
+						</c:when>
+						<c:otherwise>
+							<legend>Bestellung</legend>
+						</c:otherwise>
+						</c:choose>
+					
+						<h:panelGrid columns="2" style="max-width: 400px">
+						
+							<h:outputLabel value="Kunde:      " />
+								<h:outputText
+								  		   value="#{bestellungVerwaltungController.bestellungViewBean.bestellungView.kunde.nachname} #{bestellungVerwaltungController.bestellungViewBean.bestellungView.kunde.vorname}" 
+											  />
+							<h:outputLabel value="Anzahl:" />
+							<h:inputText id="show_bestellung_anzahl"
+										 value="#{bestellungViewBean.bestellungView.bestellung.anzahl}" 
+										 maxlength="2"
+							             required="true" requiredMessage="Bitte Anzahl eingeben."
+							             validatorMessage="Bitte Anzahl eingeben."
+							             converterMessage="Bitte gueltige Anzahl eingeben."						             
+							             style=" width : 40px;"
+							             rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_ERFASSEN'
+							             		  or bestellungVerwaltungController.dialogModus=='BESTELLUNG_MUTIEREN'}">
+								<f:validateLongRange minimum="1" maximum="99" />
+							</h:inputText>
+							<h:outputText value="#{bestellungViewBean.bestellungView.bestellung.anzahl}" 
+							              rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+										 >
+							</h:outputText>
+							
+							<h:outputLabel value="Liefertermin:" />
+							<h:inputText id="show_bestellung_liefertermin"
+										 value="#{bestellungViewBean.bestellungView.bestellung.liefertermin}" 
+										 style=" width : 130px; "
+										 styleClass="datepickerInputPlus4"
+							             required="true" requiredMessage="Bitte gewuenschten Lieferterming eingeben."
+							             converterMessage="Bitte gueltigen Liefertermin eingeben."	
+							             rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_ERFASSEN'
+							             		  or bestellungVerwaltungController.dialogModus=='BESTELLUNG_MUTIEREN'}">
+								<f:convertDateTime locale="de" pattern="E, dd.MM.yyyy" timeZone="#{globalBean.hostTimeZone}"/>
+							</h:inputText>
+							<h:outputText value="#{bestellungViewBean.bestellungView.bestellung.liefertermin}" 
+										 style="width : 300px;"
+							             rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+								<f:convertDateTime locale="de_CH" pattern="E, dd.M.yyyy" timeZone="#{globalBean.hostTimeZone}"/>
+							</h:outputText>
+							
+							<h:outputLabel value="Preis SFr:" 
+										   rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}"/>
+							<h:outputText value="#{bestellungViewBean.bestellungView.bestellung.preistotal}"
+										  rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+								<f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="de_CH" />
+							</h:outputText>
+							<h:outputLabel value="Guthaben SFr:"
+										   rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}"/>
+							<h:outputText value="#{bestellungViewBean.bestellungView.kunde.guthaben}"
+										  rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+								<f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="de_CH" />
+							</h:outputText>
+						</h:panelGrid>
+
+						<h:panelGroup rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+							<div style="width: 100%; padding-left: 4px">
+								<h:outputText value="Dein Guthaben wird erst bei Lieferung belastet." 
+											  />
+							</div>
+						</h:panelGroup>
+
+	
+						<h:panelGrid columns="1" style="width: 100%">
+	
+							<h:outputLabel value="Hinweis zum Liefertermin:" 
+										   rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_ERFASSEN' or
+										               bestellungVerwaltungController.dialogModus=='BESTELLUNG_MUTIEREN'}"/>
+							<h:panelGroup rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_ERFASSEN' or
+										              bestellungVerwaltungController.dialogModus=='BESTELLUNG_MUTIEREN'}">
+								<div >
+									<h:outputText value="In der Regel findet die Lieferung jeweils am Dienstag statt.
+									                     Falls möglich, werden auch andere Terminwünsche berücksichtigt.
+									                     Sobald der Liefertermin feststeht, ist der bestätigte Liefertermin in der Bestellung zu sehen." 
+												  />
+								</div>
+							</h:panelGroup>
+	
+							<h:outputLabel value="Kommentar:" />				
+							<h:inputTextarea id="show_bestellung_kommentar"
+										     value="#{bestellungViewBean.bestellungView.bestellung.kommentar}" 
+											 validatorMessage="Maximal 255 Zeichen im Kommentar."
+										 	 style="width: 100%; height: 100px;"
+							             	 disabled="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+								<f:validateLength maximum="255"></f:validateLength>
+							</h:inputTextarea>
+						</h:panelGrid>
+					</fieldset>
+					<div class="w3-center">
+					<h:messages styleClass="messages" layout="table"/>							 
+					<h:commandButton action="#{bestellungVerwaltungController.bestellenWeiter()}" value="Weiter" styleClass="normalButton"
+									 rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_ERFASSEN'}"/>
+					<h:commandButton action="#{bestellungVerwaltungController.bestellenSpeichern()}" value="Bestellen" styleClass="normalButton"
+									 rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}"/>
+					<h:commandButton action="#{bestellungVerwaltungController.bestellungMutierenSpeichern()}" value="Speichern" styleClass="normalButton"
+									 rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_MUTIEREN'}"/>
+					<h:commandButton action="#{bestellungVerwaltungController.bestellenAbbruch()}" value="Abbrechen" styleClass="normalButton"
+					 				 immediate="true"/>
+					</div>
+				</h:form>
+				</div>
+				<div class="w3-half w3-center" style="height: 100%">
+					<h:graphicImage value="/images/zweibibeli.png"
+									style="width: 100%; max-width: 400px; padding: 18px 10px 10px 10px"/>
+<!-- 					<h:outputText value="Im Osterstress..." style="margin-left: 30px"/> -->
+				</div>
+			</div>
+		</ui:define>
+		
+	</ui:composition>
+</body> 
+</html>

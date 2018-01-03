@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Bestellungen</title>
+</h:head> 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+
+
+
+	<ui:define name="content">
+		<h2 class="w3-center">Offene Bestellungen #{bestellungViewBean.bestellungView.kunde.nachname} #{bestellungViewBean.bestellungView.kunde.vorname}</h2>
+		<h:form styleClass="w3-center">
+		
+<!-- 		Data Table schmal -->
+<!-- 			<h:dataTable value="#{bestellungListeViewBean.bestellungListView}" var="bestellungItem" -->
+<!-- 						 styleClass="datagrid" -->
+<!-- 						 cellspacing="0"> -->
+<!-- 				<h:column rendered="#{bestellungListeViewBean.anzahlStatusBestellt>0}"> -->
+<!-- 					<f:facet name="header" ></f:facet> -->
+<!-- 					<h:selectBooleanCheckbox value="#{bestellungItem.checked}"  -->
+<!-- 											 rendered="#{bestellungItem.bestellung.status == 1}"/> -->
+<!-- 				</h:column> -->
+<!-- 				<h:column > -->
+<!-- 					<f:facet name="header">Bestell<br />Nr </f:facet> -->
+<!-- 					#{bestellungItem.bestellung.id} -->
+<!-- 				</h:column> -->
+<!-- 				<h:column > -->
+<!-- 					<f:facet name="header">gewuenschter<br />Liefertermin</f:facet> -->
+<!-- 					<h:outputText value="#{bestellungItem.bestellung.liefertermin}" -->
+<!-- 								  > -->
+<!-- 						<f:convertDateTime locale="de_CH" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/> -->
+<!-- 					</h:outputText> -->
+<!-- 				</h:column> -->
+<!-- 				<h:column> -->
+<!-- 					<f:facet name="header">Liefertermin<br />bestaetigt</f:facet> -->
+<!-- 					<h:outputText value="#{bestellungItem.bestellung.lieferterminBestaetigt}"> -->
+<!-- 						<f:convertDateTime locale="de_CH" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/> -->
+<!-- 					</h:outputText> -->
+<!-- 				</h:column> -->
+<!-- 				<h:column> -->
+<!-- 					<f:facet name="header">Status</f:facet> -->
+<!-- 					#{bestellungItem.statusBestellung} -->
+<!-- 				</h:column> -->
+<!-- 				<h:column> -->
+<!-- 					<f:facet name="header">Anzahl</f:facet> -->
+<!-- 					#{bestellungItem.bestellung.anzahl} -->
+<!-- 				</h:column> -->
+<!-- 				<h:column> -->
+<!-- 					<f:facet name="header">Preis</f:facet> -->
+<!-- 					<h:outputText value="#{bestellungItem.bestellung.preistotal}"> -->
+<!-- 						<f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="de_CH" /> -->
+<!-- 					</h:outputText> -->
+<!-- 				</h:column> -->
+<!-- 				<h:column> -->
+<!-- 					<f:facet name="header">Kommentar</f:facet> -->
+<!-- 					<div style="max-width: 150px"> -->
+<!-- 					#{bestellungItem.bestellung.kommentar} -->
+<!-- 					</div> -->
+<!-- 				</h:column> -->
+<!-- 			</h:dataTable> -->
+<!-- 		Data Table breit -->
+			<div class="w3-responsive">
+
+			<h:dataTable value="#{bestellungListeViewBean.bestellungListView}" var="bestellungItem"
+						 styleClass="datagrid"
+						 cellspacing="0">
+				<h:column rendered="#{bestellungListeViewBean.anzahlStatusBestellt>0}">
+					<f:facet name="header" ></f:facet>
+					<h:selectBooleanCheckbox value="#{bestellungItem.checked}" 
+											 rendered="#{bestellungItem.bestellung.status == 1}"/>
+				</h:column>
+				<h:column >
+					<f:facet name="header">Bestell<br />Nr </f:facet>
+					#{bestellungItem.bestellung.id}
+				</h:column>
+				<h:column >
+					<f:facet name="header">gew&uuml;nschter<br />Liefertermin</f:facet>
+					<h:outputText value="#{bestellungItem.bestellung.liefertermin}"
+								  >
+						<f:convertDateTime locale="de_CH" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Liefertermin<br />best&auml;tigt</f:facet>
+					<h:outputText value="#{bestellungItem.bestellung.lieferterminBestaetigt}">
+						<f:convertDateTime locale="de_CH" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Status</f:facet>
+					#{bestellungItem.statusBestellung}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Anzahl</f:facet>
+					#{bestellungItem.bestellung.anzahl}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Preis</f:facet>
+					<h:outputText value="#{bestellungItem.bestellung.preistotal}">
+						<f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="de_CH" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Kommentar</f:facet>
+					<div style="max-width: 150px">
+					#{bestellungItem.bestellung.kommentar}
+					</div>
+				</h:column>
+			</h:dataTable>
+			
+			</div>
+			
+			<h:messages styleClass="messages" layout="table"/>
+			<h:outputLabel value="Es k&ouml;nnen nur Bestellungen mit Status 'bestellt' mutiert werden." />
+			<br />
+			<h:commandButton action="#{bestellungVerwaltungController.bestellungGewaehltMutieren()}" value="Bestellung mutieren"
+							 disabled="#{!bestellungListeViewBean.statusBestelltVorhanden}"
+							 styleClass="normalButton"/>
+			<h:commandButton action="#{bestellungVerwaltungController.bestellungStorieren()}" value="Bestellung stornieren"
+							 disabled="#{!bestellungListeViewBean.statusBestelltVorhanden}"
+							 styleClass="normalButton"/>
+		</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

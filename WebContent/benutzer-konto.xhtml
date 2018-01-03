@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	Benutzer
+</h:head> 
+<body> 
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<fieldset class="fieldset" >
+				<legend>Daten zu Benutzer '#{benutzerBean.name}'</legend>
+				<h:panelGrid columns="2" style="max-width: 230px">
+					<h:outputLabel value="Nachname:" />
+					<h:outputText value="#{kundeViewBean.kundeView.kunde.nachname}"
+								  rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_ANZEIGEN'}"/>
+					<h:inputText value="#{kundeViewBean.kundeView.kunde.nachname}" 
+								 required="true"
+								 requiredMessage="Nachnamen eingeben"
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_MUTIEREN'}" />
+					<h:outputLabel value="Vorname:" />
+					<h:outputText value="#{kundeViewBean.kundeView.kunde.vorname}" 
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_ANZEIGEN'}" />
+					<h:inputText value="#{kundeViewBean.kundeView.kunde.vorname}" 
+								 required="true"
+								 requiredMessage="Vornamen eingeben"
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_MUTIEREN'}" />						 		 
+					<h:outputLabel value="E-Mail:" />
+					<h:outputText value="#{benutzerViewBean.benutzerView.benutzer.email}"
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_ANZEIGEN'}" />
+					<h:inputText value="#{benutzerViewBean.benutzerView.benutzer.email}"
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_MUTIEREN'}" />
+				</h:panelGrid>
+				</fieldset>
+				<br />
+				<h:messages styleClass="messages" layout="table"/>
+				<div class="w3-center">
+				<h:commandButton action="#{passwortAendernController.startPasswortAendern()}" value="Passwort &auml;ndern" 
+						 		 styleClass="normalButton"
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_ANZEIGEN'}"/>
+				<h:commandButton action="#{kundenVerwaltungController.gotoKundenDatenMutieren()}" value="Mutieren" 
+						 				 styleClass="normalButton"
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_ANZEIGEN'}"/>
+				<h:commandButton action="#{kundenVerwaltungController.kontoDatenSpeichern()}" value="Speichern"
+						 		 styleClass="normalButton"
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_MUTIEREN'}"/>
+				<h:commandButton action="#{kundenVerwaltungController.kontoDatenAbbrechen()}" value="Abbrechen" immediate="true"
+						 		 styleClass="normalButton"
+						 		 rendered="#{kundenVerwaltungController.dialogModus=='KUNDE_MUTIEREN'}"/>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

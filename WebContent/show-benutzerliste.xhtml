@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Benutzerverwaltung</title>
+</h:head> 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+ 
+ 
+	<ui:define name="content">
+		<h1 class="w3-center">Benutzerliste</h1>
+		<h:form styleClass="w3-center">
+		<div class="w3-responsive">
+			<h:dataTable value="#{benutzerListeViewBean.benutzerListView}" var="benutzerItem"
+						 styleClass="datagrid" cellspacing="0">
+				<h:column >
+					<f:facet name="header" ></f:facet>
+					<h:selectBooleanCheckbox value="#{benutzerItem.checked}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{benutzerItem.benutzer.name}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Rolle</f:facet>
+					#{benutzerItem.rolle}
+				</h:column>
+				<h:column>
+					<f:facet name="header">E-Mail</f:facet>
+					#{benutzerItem.benutzer.email}
+				</h:column>
+				<h:column >
+					<f:facet name="header">Logins</f:facet>
+					#{benutzerItem.benutzer.loginCounter}
+				</h:column>
+				<h:column >
+					<f:facet name="header">Letztes Login</f:facet>
+					<h:outputText value="#{benutzerItem.benutzer.loginZuletzt}">
+						<f:convertDateTime type="both" locale="de" timeZone="#{globalBean.hostTimeZone}"/>
+					</h:outputText>
+				</h:column>
+			</h:dataTable>
+		</div>
+		<h:messages styleClass="messages" layout="table"/>
+		<h:commandButton action="#{benutzerVerwaltungController.gotoBenutzerErfassen()}" value="Neuer Benutzer" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZER_VERWALTUNG'}"
+						 styleClass="normalButton"/>
+		<h:commandButton action="#{benutzerVerwaltungController.gotoBenutzerMutieren}" value="Benutzer mutieren" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZER_VERWALTUNG'}"
+						 styleClass="normalButton"/>
+		<h:commandButton action="#{benutzerVerwaltungController.benutzerLoeschen()}" value="selektierte löschen" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZER_VERWALTUNG'}"
+						 styleClass="normalButton"/>
+		<h:commandButton action="#{kundenVerwaltungController.benutzerAusgewaehlt()}" value="Benutzer ausw&auml;hlen" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZERWAHL_FUER_KUNDE'}"
+						 styleClass="normalButton"/>
+		</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

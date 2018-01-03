@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Benutzerverwaltung</title>
+</h:head> 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h1 class="w3-center">Kundenliste</h1>
+		<h:form styleClass="w3-center">
+		<div class="w3-responsive">
+			<h:dataTable value="#{kundeListeViewBean.kundenListView}" var="kundenItem"
+						 styleClass="datagrid" cellspacing="0">
+				<h:column >
+					<f:facet name="header" ></f:facet>
+					<h:selectBooleanCheckbox value="#{kundenItem.checked}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nachname</f:facet>
+					#{kundenItem.kunde.nachname}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Vorname</f:facet>
+					#{kundenItem.kunde.vorname}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Guthaben</f:facet>
+					#{kundenItem.kunde.guthaben}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Benutzername</f:facet>
+					<h:dataTable value="#{kundenItem.benutzerListe}" var="benutzerItem" 
+								 styleClass="datagridMini" cellspacing="0">
+						<h:column>
+						#{benutzerItem.benutzer.name}
+						</h:column>
+					</h:dataTable>
+				</h:column>
+				<h:column>
+					<f:facet name="header">E-Mail</f:facet>
+					<h:dataTable value="#{kundenItem.benutzerListe}" var="benutzerItem" 
+								 styleClass="datagridMini" cellspacing="0">
+						<h:column>
+						#{benutzerItem.benutzer.email}
+						</h:column>
+					</h:dataTable>
+				</h:column>
+			</h:dataTable>
+		</div>
+		<h:messages styleClass="messages" layout="table"/>
+		<h:commandButton action="#{kundenVerwaltungController.gotoKundeErfassen()}" value="Neuer Kunde"
+						 styleClass="normalButton"/>
+		<h:commandButton action="#{kundenVerwaltungController.gotoKundeMutieren()}" value="Kunde mutieren" 
+						 styleClass="normalButton"/>
+		<h:commandButton action="#{kundenVerwaltungController.gotoEinzahlungErfassen()}" value="Zahlung erfassen" 
+						 styleClass="normalButton"/>
+		<h:commandButton rendered="false"
+		                 action="#{kundenVerwaltungController.kundenLoeschen()}" value="selektierte löschen" 
+						 styleClass="normalButton"/>
+		</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

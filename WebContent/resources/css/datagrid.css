@@ -1,0 +1,185 @@
+.datagrid {
+	margin: 0px 0px 10px 0px;
+    padding:0px;
+	width:100%;
+    box-shadow: 5px 5px 5px 0px #535763;
+	border:1px solid #000000;
+	
+	-moz-border-radius-bottomleft:4px;
+	-webkit-border-bottom-left-radius:4px;
+	border-bottom-left-radius:4px;
+	
+	-moz-border-radius-bottomright:4px;
+	-webkit-border-bottom-right-radius:4px;
+	border-bottom-right-radius:4px;
+	
+	-moz-border-radius-topright:4px;
+	-webkit-border-top-right-radius:4px;
+	border-top-right-radius:4px;
+	
+	-moz-border-radius-topleft:4px;
+	-webkit-border-top-left-radius:4px;
+	border-top-left-radius:4px;
+}
+.datagrid table{
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+}
+
+.datagrid th{
+
+	padding: 0px 5px 0px 5px;
+	background:-o-linear-gradient(bottom, #FF9D00 5%, #F2DB08 100%);
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FF9D00), color-stop(1, #F2DB08) );
+	background:-moz-linear-gradient( center top, #FF9D00 5%, #F2DB08 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FF9D00", endColorstr="#F2DB08");	
+    background: -o-linear-gradient(top,#FF9D00,#F2DB08);
+    
+	background-color:#FF9D00;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 1px 0px;
+	font-size:18px;
+	font-family:Comic Sans MS;
+	font-weight:bold;
+	color: #000000;
+
+}
+
+
+
+.datagrid tr:last-child td:last-child {
+	-moz-border-radius-bottomright:4px;
+	-webkit-border-bottom-right-radius:4px;
+	border-bottom-right-radius:4px;
+}
+.datagrid table tr:first-child td:first-child {
+	-moz-border-radius-topleft:4px;
+	-webkit-border-top-left-radius:4px;
+	border-top-left-radius:4px;
+}
+.datagrid table tr:first-child td:last-child {
+	-moz-border-radius-topright:4px;
+	-webkit-border-top-right-radius:4px;
+	border-top-right-radius:4px;
+}
+.datagrid tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:4px;
+	-webkit-border-bottom-left-radius:4px;
+	border-bottom-left-radius:4px;
+	
+}
+.datagrid tr:hover td{
+   background: #F2DB08
+}
+
+.datagrid td{
+	vertical-align:middle;
+
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #FFEC45), color-stop(1, #FBFCA9));
+	background:-moz-linear-gradient(top, #FFEC45 5%, #FBFCA9 100%);
+	background:-webkit-linear-gradient(top, #FFEC45 5%, #FBFCA9 100%);
+	background:-o-linear-gradient(top, #FFEC45 5%, #FBFCA9 100%);
+	background:-ms-linear-gradient(top, #FFEC45 5%, #FBFCA9 100%);
+	background:linear-gradient(to bottom, #FFEC45 5%, #FBFCA9 100%);
+
+	background-color:#FFEC45;
+
+	border:3px solid #000000;
+	border-width:0px 1px 1px 0px;
+	text-align:left;
+	padding:5px;
+	font-size:16px;
+	font-family:Comic Sans MS;
+	font-weight:normal;
+	color: #000000;
+}
+.datagrid tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}
+.datagrid tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}
+.datagrid tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+
+
+.datagrid tr:first-child td{
+	vertical-align:middle;
+	background:-o-linear-gradient(bottom, #FFEC45 5%, #FBFCA9 100%); 
+ 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FFEC45), color-stop(1, #FBFCA9) ); 
+ 	background:-moz-linear-gradient( center top, #FFEC45 5%, #FBFCA9 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFEC45", endColorstr="#FBFCA9");
+	background: -o-linear-gradient(top,#FFEC45,#FBFCA9);
+
+	background-color:#FFEC45;
+
+	border:3px solid #000000;
+	border-width:1px 1px 1px 0px;
+	text-align:left;
+	padding:5px;
+	font-size:16px;
+	font-family:Comic Sans MS;
+	font-weight:normal;
+	color: #000000;	
+}
+
+.datagrid tr:first-child:hover td{
+   background: #F2DB08
+}
+.datagrid tr:first-child td:first-child{
+	border-width:1px 1px 1px 0px;
+}
+.datagrid tr:first-child td:last-child{
+	border-width:1px 0px 1px 0px;
+}
+
+/* =================================================== */
+/* Table innerhalb von datagrid                        */
+
+.datagridMini {
+	margin:0px;
+    padding:0px;
+	width:100%;
+	background: transparent;
+}
+
+.datagridMini table{
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+	background: transparent;
+}
+
+
+.datagridMini tr:hover td{
+   /*background: #F2DB08*/
+}
+
+.datagridMini td{
+	background: transparent;
+	border:0px solid #000000;
+	border-width:0px 0px 0px 0px;
+	text-align:left;
+	padding:0px;
+	font-size:16px;
+	font-family:Comic Sans MS;
+	font-weight:normal;
+	color: #000000;
+}
+
+
+.datagridMini tr:first-child td:first-child{
+	border-width:0px 0px 0px 0px;
+	margin: 0px;
+	padding: 0px;
+	background: transparent; 
+}
+.datagridMini tr:first-child td:last-child{
+	border-width:0px 0px 0px 0px;
+	margin: 0px;
+	padding: 0px;
+	background: transparent;
+}

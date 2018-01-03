@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	Benutzer
+</h:head> 
+<body> 
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<fieldset class="fieldset" >
+				<legend>Passwort &auml;ndern</legend>
+				<h:panelGrid columns="2" style="max-width:400px">
+					<h:outputLabel value="Passwort:"/>
+					<h:inputSecret id="pw_alt"
+								   value="#{passwortAendernController.pw}"
+								   style="width: 100%; max-width:200px"
+								   redisplay="false"
+								   required="true"
+								   requiredMessage="Passwort eingeben"/>
+					<h:panelGroup></h:panelGroup> 
+					<h:messages for="pw_alt" styleClass="messages" layout="table"/>
+					<h:panelGroup></h:panelGroup> 
+					<h:panelGroup><br /></h:panelGroup> 
+					<h:outputLabel value="Neues Passwort:" />
+					<h:inputSecret id="pw_neu1"
+								   value="#{passwortAendernController.pwNeu1}" 
+								   style="width: 100%; max-width:200px"
+								   redisplay="false"
+								   required="true"
+								   requiredMessage="Neues Passwort eingeben"/>
+					<h:panelGroup></h:panelGroup> 
+					<h:messages for="pw_neu1" styleClass="messages" layout="table"/>
+					<h:outputLabel value="Passwort wiederholen:" />
+					<h:inputSecret id="pw_neu2"
+								   value="#{passwortAendernController.pwNeu2}"
+								   style="width: 100%; max-width:200px"
+								   redisplay="false"
+								   required="true" 
+								   requiredMessage="Neues Passwort eingeben"/>
+					<h:panelGroup></h:panelGroup> 
+					<h:messages for="pw_neu2" styleClass="messages" layout="table"/>
+				</h:panelGrid>
+				</fieldset>
+				<div class="w3-center">
+					<h:commandButton action="#{passwortAendernController.passwortSpeichern()}" value="Passwort &auml;ndern" 
+							 				 styleClass="normalButton"/>
+					<h:commandButton action="#{passwortAendernController.passwortAbbrechen()}" value="Abbrechen" immediate="true"
+							 			 styleClass="normalButton"/>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

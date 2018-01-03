@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	Benutzer
+</h:head> 
+<body> 
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<fieldset class="fieldset" >
+				<legend>Kundendaten erfassen</legend>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Benutzername:" />
+						<h:inputText id="show_benutzer_name"
+									 style="width : 200px;"
+									 value="#{benutzerViewBean.benutzerView.benutzer.name}" 
+									 required="true"
+									 requiredMessage="Benutzername eingeben"/>
+						<h:messages for="show_benutzer_name" styleClass="messages" layout="table"/>							 
+					<h:outputLabel value="E-Mail"/>
+						<h:inputText id="show_benutzer_email"
+									 style="width : 200px;"
+									 value="#{benutzerViewBean.benutzerView.benutzer.email}" 
+									 maxlength="254"/>
+						<h:panelGroup></h:panelGroup>						 
+					<h:outputLabel value="Passwort:" />
+						<h:inputText id="show_benutzer_pw"
+									 style="width : 200px;"
+									 value="#{benutzerViewBean.benutzerView.pw}"
+									 required="true" 
+									 requiredMessage="Passwort eingeben"/>
+						<h:messages for="show_benutzer_pw" styleClass="messages" layout="table"/>
+					<h:outputLabel value="Rolle:" />
+					<h:selectOneMenu value="#{benutzerViewBean.benutzerView.rolle}" >
+						<f:selectItems value="#{benutzerVerwaltungController.selectItems}" />
+					</h:selectOneMenu>
+					<h:panelGroup></h:panelGroup>	
+				</h:panelGrid>
+				</fieldset>
+				<br />
+				<div>
+					<h:commandButton action="#{benutzerVerwaltungController.benutzerSpeichern}" value="Speichern" 
+							 				 styleClass="normalButton"/>
+					<h:commandButton action="#{benutzerVerwaltungController.abbrechenBenutzerMutieren()}" value="Abbrechen" immediate="true"
+							 			 styleClass="normalButton"/>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

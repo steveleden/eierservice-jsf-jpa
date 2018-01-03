@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<head>
+</head>
+ 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+
+		<ui:define name="left" >
+<!-- 		Fürs Loggin hier nichts anzeigen -->
+<!-- 			<div style="background-color: #FFFFCC; min-height: 30em"></div> -->
+		</ui:define>				
+		<ui:define name="content">
+			<div >
+				<div id="login-small" class="w3-container w3-center w3-green">
+			        <h:form class="w3-hide-medium w3-hide-large w3-padding-8">
+			            <a id="btn-login" 
+			              		class="w3-btn w3-green w3-border w3-border-white w3-text-white"
+			                    href="javascript:void(0);" onclick="showLoginExpanded()">
+			                Login
+			            </a>
+			        </h:form>
+
+			        
+				</div>
+
+<!-- 				Login Grossbild -->
+					<h:form id="frm1" class="w3-container w3-light-green w3-hide-small"
+							style="padding-top: 7px">
+						<h:panelGrid columns="5" styleClass="w3-center" cellpadding="4" >
+						    <h:outputLabel value="Benutzer:" styleClass="w3-text-sand"/>		     
+						    <h:inputText id="the_user"
+						    	value = "#{benutzerBean.name}"						    
+							    style="height: 30px; width: 100%"
+						        required="true" 
+						        requiredMessage="Benutzername eingeben"
+						        />
+						    <h:outputLabel value="Passwort:" styleClass="w3-text-sand"/>		     
+						    <h:inputSecret id="the_password"  
+						    	value = "#{authController.password}"				    
+							    style="height: 30px; width: 100%;"
+						        required="true" 
+						        redisplay="false"
+						        requiredMessage="Passwort eingeben" >
+						    </h:inputSecret>
+							<h:panelGroup>
+							    <h:commandButton 
+					        			value="Login" 
+					        			action="#{authController.login()}"
+					        			styleClass="w3-btn w3-green w3-border w3-border-white w3-text-white"/>
+			         		</h:panelGroup>
+			         		<h:panelGrid></h:panelGrid>
+							<h:messages for="the_user"
+										styleClass="messages"
+									    id="error1"
+									    layout="table"/>				        
+			         		<h:panelGrid></h:panelGrid>
+							<h:messages for="the_password"
+										styleClass="messages"
+									    id="error2"
+									    layout="table"/>				    
+						</h:panelGrid>
+	
+		       		</h:form>
+
+<!-- 				Login Schmalbild -->
+			    <div id="login-expanded" class="w3-center w3-hide w3-hide-large w3-hide-medium">
+			        <h:form id="frm2" class="w3-container w3-light-green w3-padding-8">
+
+						<h:panelGrid columns="2" cellpadding="2">
+						    <h:outputLabel value="Benutzer:" styleClass="w3-text-sand w3-right"/>		     
+						    <h:inputText id="the_user" styleClass="w3-left"
+						    	value = "#{benutzerBean.name}"
+						    	style="height: 30px; width: 100%; max-width: 250px"
+						        required="true" 
+						        requiredMessage="Benutzername eingeben"
+						        />
+			         		<h:panelGrid></h:panelGrid>
+							<h:messages for="the_user"
+										styleClass="messages"
+									    id="error1"
+									    layout="table"/>				        
+						    <h:outputLabel value="Passwort:" styleClass="w3-text-sand w3-right"/>		     
+						    <h:inputSecret id="the_password" styleClass="w3-left" 
+						    	value = "#{authController.password}"
+						    	style="height: 30px; width: 100%; max-width: 250px"
+						        required="true" 
+						        redisplay="false"
+						        requiredMessage="Passwort eingeben" >
+						    </h:inputSecret>
+			         		<h:panelGrid></h:panelGrid>
+							<h:messages for="the_password"
+										styleClass="messages"
+									    id="error2"
+									    layout="table"/>				    
+							
+						</h:panelGrid>
+					    <h:commandButton 
+			        			value="Login" 
+			        			action="#{authController.login()}"
+			        			styleClass="w3-btn w3-green w3-border w3-border-white w3-text-white"/>
+			        	
+			        </h:form>
+			    </div>
+
+			    <div class="w3-container w3-red w3-center">
+					<p class="w3-large"><b>Neu</b></p>
+					<p>Wenn du willst, kannst du mehrere Eierlieferungen im Voraus 
+					bezahlen. Dein aktuelles Guthaben wird jeweils angezeigt. Bei Lieferung wird dann dein Guthaben belastet.</p>
+			    </div>			
+
+
+			    <div class="w3-display-container w3-center w3-sand w3-padding-8" style="width: 100%;">
+			        <img src="images/chick.jpg" alt="Chick mit Ei" style="max-width: 100%;"/>
+			    </div>
+			</div>
+			
+ 		</ui:define>
+
+ 	</ui:composition>
+ 	     
+</body> 
+</html>

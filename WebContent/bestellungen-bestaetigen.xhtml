@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Bestellungen</title>
+</h:head> 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+
+
+	<ui:define name="content">
+		<h1 class="w3-center">Bestellungen best&auml;tigen</h1>
+		<h:form styleClass="w3-center">
+			<div class="w3-responsive">
+				<h:dataTable value="#{bestellungListeViewBean.bestellungListView}" var="bestellungItem"
+							 styleClass="datagrid" cellspacing="0">
+					<h:column >
+						<f:facet name="header" ></f:facet>
+						<h:selectBooleanCheckbox value="#{bestellungItem.checked}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">gew&uuml;nschter<br />Liefertermin</f:facet>
+						<h:outputText value="#{bestellungItem.bestellung.liefertermin}">
+							<f:convertDateTime locale="de_CH" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/>
+						</h:outputText>
+					</h:column>
+					<h:column rendered="#{bestellungVerwaltungController.dialogModus=='BESTAETIGTE_EINBLENDEN'}">
+						<f:facet name="header">best&auml;tigter<br />Liefertermin</f:facet>
+						<h:outputText value="#{bestellungItem.bestellung.lieferterminBestaetigt}">
+							<f:convertDateTime locale="de_CH" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/>
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Anzahl</f:facet>
+						#{bestellungItem.bestellung.anzahl}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Kunde</f:facet>
+						<div style="max-width: 200px">
+							<h:outputText value="#{bestellungItem.kunde.nachname}" style="margin: 5px"/>
+							<h:outputText value="#{bestellungItem.kunde.vorname}"  style="margin: 5px"/>
+						</div>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Kommentar</f:facet>
+						<div style="max-width: 250px">
+						#{bestellungItem.bestellung.kommentar}
+						</div>
+					</h:column>
+				</h:dataTable>
+			</div>
+			<h:messages styleClass="messages" layout="table"/>
+			<h:commandButton action="#{bestellungVerwaltungController.gotoBestaetigen()}" value="Liefertermin best&auml;tigen"
+							 styleClass="normalButton"/>
+			<h:commandButton action="#{bestellungVerwaltungController.bestaetigteBestellungenEinblenden()}" value="best&auml;tigte Lieferungen einblenden"
+							 rendered="#{bestellungVerwaltungController.dialogModus=='NEUTRAL'}"
+							 styleClass="normalButton"/> 
+			<h:commandButton action="#{bestellungVerwaltungController.bestaetigteBestellungenAusblenden()}" value="best&auml;tigte Lieferungen ausblenden"
+							 rendered="#{bestellungVerwaltungController.dialogModus=='BESTAETIGTE_EINBLENDEN'}"
+							 styleClass="normalButton"/> 
+		</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

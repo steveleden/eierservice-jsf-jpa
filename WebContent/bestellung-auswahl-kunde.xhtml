@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<title>Kunde fuer Bestellung</title>
+</h:head> 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+		<h2 class="w3-center">Kunde f&uuml;r Bestellung auswaehlen:</h2>
+		<h:form styleClass="w3-center">
+		<h:dataTable value="#{kundeListeViewBean.kundenListView}" var="kundenItem"
+					 styleClass="datagrid" cellspacing="0">
+			<h:column >
+				<f:facet name="header" ></f:facet>
+				<h:selectBooleanCheckbox value="#{kundenItem.checked}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Kunde</f:facet>
+				<div style="max-width: 200px">
+					<h:outputText value="#{kundenItem.kunde.nachname}" style="margin: 5px"/>
+					<h:outputText value="#{kundenItem.kunde.vorname}"  style="margin: 5px"/>
+				</div>
+			</h:column>
+		</h:dataTable>
+		<h:messages styleClass="messages" layout="table"/>
+		<h:commandButton action="#{bestellungVerwaltungController.weiterNachKundenAuswahl()}" value="Weiter"
+						 styleClass="normalButton"/>
+
+		</h:form>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

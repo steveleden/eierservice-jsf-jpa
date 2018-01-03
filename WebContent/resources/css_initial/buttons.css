@@ -1,0 +1,249 @@
+
+
+/* ---------------------------------------------------------------------- */
+/* normale Buttons          	                                          */
+/* ---------------------------------------------------------------------- */
+
+.normalButton  {
+
+	margin: 10px 5px 10px 5px;
+	padding:5px 20px;
+	
+	-moz-box-shadow: 5px 5px 5px 0px #535763;
+	-webkit-box-shadow: 5px 5px 5px 0px #535763;
+	box-shadow: 5px 5px 5px 0px #535763;		
+
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:1px solid #4e6096;
+	
+	/* background weiss: so funktionierts auch einigermassen fuer den Safari (wieso auch immer)*/
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff));
+	background:-moz-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #ffab23 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0);
+	background-color:#ffffff;
+
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #283966;
+}
+
+.normalButton:hover {
+
+	background: url('/resources/images/eigelb.jpg') no-repeat center;
+	background-color:#ffffff;
+
+}
+
+.normalButton:active {
+	
+	position:relative;
+	top:2px;
+	
+	-moz-box-shadow:inset 1px 1px 1px 0px #535763;
+	-webkit-box-shadow:inset 1px 1px 1x 0px #535763;
+	box-shadow: 1px 1px 1px 0px #535763;	
+
+}
+
+.normalButton:disabled {
+	color: gray;
+}
+
+/* ---------------------------------------------------------------------- */
+/* normale Buttons klein      	                                          */
+/* ---------------------------------------------------------------------- */
+
+
+.normalButtonKlein  {
+
+	margin: 2px 2px 2px 2px;
+	padding:1px 15px;
+	
+	-moz-box-shadow: 2px 2px 2px 0px #535763;
+	-webkit-box-shadow: 2px 2px 2px 0px #535763;
+	box-shadow: 2px 2px 2px 0px #535763;	
+	
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:1px solid #4e6096;
+
+	/* background weiss: so funktionierts auch einigermassen fuer den Safari (wieso auch immer)*/
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff));
+	background:-moz-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0);
+	background-color:#ffffff;
+	
+	display:inline-block;	
+	cursor:pointer;
+	color: #000000;
+	font-family:Arial;
+	font-size:12px;
+	text-decoration: none;
+	text-shadow:0px 0px 0px #283966;
+
+}
+.normalButtonKlein:hover {
+	/* background weiss: so funktionierts auch einigermassen fuer den Safari (wieso auch immer)*/
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #808080), color-stop(1, #808080));
+	background:-moz-linear-gradient(top, #808080 5%, #808080 100%);
+	background:-webkit-linear-gradient(top, #808080 5%, #808080 100%);
+	background:-o-linear-gradient(top, #808080 5%, #808080 100%);
+	background:-ms-linear-gradient(top, #808080 5%, #808080 100%);
+	background:linear-gradient(to bottom, #808080 5%, #808080 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080', endColorstr='#808080',GradientType=0);
+	background-color:#808080;
+}
+
+.normalButtonKlein:active {
+	position:relative;
+	top:1px;	
+	-moz-box-shadow:inset 1px 1px 1px 0px #535763;
+	-webkit-box-shadow:inset 1px 1px 1x 0px #535763;
+	box-shadow: 1px 1px 1px 0px #535763;	
+	
+}
+
+.normalButtonKlein:disabled {
+	color: gray;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Bestell-Buttons          	                                          */
+/* ---------------------------------------------------------------------- */
+
+.bestellButton  {
+
+
+	min-width: 350px;
+	margin: 20px 50px 20px 50px;
+	padding:5px 20px;
+
+
+	-moz-box-shadow: 5px 5px 5px 0px #535763;
+	-webkit-box-shadow: 5px 5px 5px 0px #535763;
+	box-shadow: 5px 5px 5px 0px #535763;		
+
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:1px solid #4e6096;
+
+	
+	/* background weiss: so funktionierts auch einigermassen fuer den Safari (wieso auch immer)*/
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff));
+	background:-moz-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #ffab23 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #ffffff 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0);
+	background-color:#ffffff;
+
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #283966;
+
+}
+
+.bestellButton:hover {
+
+	background: url('/resources/images/eigelb.jpg') no-repeat center;
+	background-color:#ffffff;
+
+}
+
+.bestellButton:active {
+	
+	position:relative;
+	top:2px;
+	
+	-moz-box-shadow:inset 1px 1px 1px 0px #535763;
+	-webkit-box-shadow:inset 1px 1px 1x 0px #535763;
+	box-shadow: 1px 1px 1px 0px #535763;	
+
+}
+
+.bestellButton:disabled {
+	color: gray;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Buttons auf linkem Menuband	                                          */
+/* ---------------------------------------------------------------------- */
+
+.mainButton {
+	height: 10mm;
+	width: 50mm;	
+	margin-left: 5mm;
+	margin-right: 5mm;
+	margin-top: 5mm;
+	-moz-box-shadow: 0px 1px 0px 0px #fff6af;
+	-webkit-box-shadow: 0px 1px 0px 0px #fff6af;
+	box-shadow: 0px 1px 0px 0px #fff6af;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+	background:-moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+	background-color:#ffec64;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
+}
+.mainButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+	background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+	background-color:#ffab23;
+}
+
+.mainButton:active {
+	position:relative;
+	top:1px;
+}
+
+.mainButton:disabled {
+	color: gray;
+}
+
+
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+
+<h:head> 
+</h:head> 
+<body> 
+
+	<ui:composition template="/WEB-INF/template/BasicTemplate.xhtml">
+
+		<ui:define name="content">
+			<h:form id="form_bestellung">
+				<fieldset class="fieldset" >
+					<legend>Lieferung abschliessen</legend>
+					
+					<h:panelGrid columns="2" >
+					
+						<h:outputLabel value="Kunde:" />
+						<h:panelGrid columns="2" >
+							<h:outputText value="#{bestellungVerwaltungController.bestellungViewBean.bestellungView.kunde.nachname}" 
+										  />
+							<h:outputText value="#{bestellungVerwaltungController.bestellungViewBean.bestellungView.kunde.vorname}" 
+										  />
+						</h:panelGrid>
+						
+						<h:outputLabel value="Anzahl:" />
+						<h:outputText value="#{bestellungViewBean.bestellungView.bestellung.anzahl}" /> 			
+						<h:outputLabel value="Preis:" />
+						<h:outputText value="#{bestellungViewBean.bestellungView.bestellung.preistotal}" /> 			
+						<h:outputLabel value="Guthaben:" />
+						<h:outputText value="#{bestellungViewBean.bestellungView.kunde.guthaben}" /> 			
+						<h:outputLabel value="Best&auml;tigter Liefertermin:" />
+						<h:outputText value="#{bestellungViewBean.bestellungView.bestellung.lieferterminBestaetigt}" >
+							<f:convertDateTime locale="de" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/>
+						</h:outputText>
+						<h:outputLabel value="Gew&uuml;nschter Liefertermin:" />
+						<h:outputText value="#{bestellungViewBean.bestellungView.bestellung.liefertermin}" >
+							<f:convertDateTime locale="de" pattern="E, d.M.yyyy" timeZone="#{globalBean.localTimeZone}"/>
+						</h:outputText>
+						
+						<h:outputLabel value="Preis SFR:" 
+									   rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}"/>
+						<h:outputText value="#{bestellungViewBean.bestellungView.bestellung.preistotal}"
+									  rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="de_CH" />
+						</h:outputText>
+						<h:outputLabel value="Kommentar:" />
+						<h:panelGroup></h:panelGroup>
+					</h:panelGrid>
+					
+					<h:inputTextarea id="show_bestellung_kommentar"
+								     value="#{bestellungViewBean.bestellungView.bestellung.kommentar}" 
+									 validatorMessage="Maximal 255 Zeichen im Kommentar."
+								 	 style="max-width:99%; width : 100%; height: 100px;"
+					             	 disabled="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}">
+						<f:validateLength maximum="255"></f:validateLength>
+					</h:inputTextarea>
+					
+				</fieldset>
+				<br />
+				<div class="w3-center">
+					<h:messages styleClass="messages" layout="table"/>							 
+					<h:commandButton action="#{bestellungVerwaltungController.lieferungAbschliessenNichtBezahlt()}" value="Lieferung ohne Bezahlung" styleClass="normalButton"
+					 				 immediate="true"/>
+					<h:commandButton action="#{bestellungVerwaltungController.lieferungAbschliessenBezahlt()}" value="Lieferung bar bezahlt" styleClass="normalButton"
+					 				 immediate="true"/>
+					<h:commandButton action="#{bestellungVerwaltungController.lieferungAbschliessenBelastungGuthaben()}" value="Belastung Guthaben" styleClass="normalButton"
+					 				 immediate="true"/>
+					<h:commandButton action="#{bestellungVerwaltungController.liefernAbbruch()}" value="Abbrechen" styleClass="normalButton"
+					 				 immediate="true"/>
+				</div>
+			</h:form>
+			
+		</ui:define>
+		
+	</ui:composition>
+</body> 
+</html>

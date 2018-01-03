@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head >
+	<link href="images/eggicon6464.ico" rel="shortcut icon" />
+	<script src="scripts/jquery-1.10.2.min.js"></script>
+	<script src="scripts/jquery-ui.min.js"></script>
+	<link rel="stylesheet"  type="text/css" href="resources/css/smoothness/jquery-ui.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="resources/css/w3a.css" media="all"/>
+	<script src="scripts/datepicker_de.js" type="text/javascript"></script>	
+	<script src="scripts/test.js" type="text/javascript"></script>	
+	<script>
+	function menueExpand() {
+	    document.getElementById("demo").classList.toggle("w3-show");
+	}
+	</script>
+    <script>
+    function showLoginExpanded() {
+        document.getElementById("login-expanded").classList.toggle("w3-show");
+        document.getElementById("login-small").classList.toggle("w3-hide");
+    }
+    </script>
+	<h:outputStylesheet library="css" name="styles2.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="buttons.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="datagrid.css"></h:outputStylesheet>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<f:metadata>
+	    <f:event type="preRenderView" listener="#{benutzerBean.checkAuthorisiert()}" />
+	</f:metadata> 	<title><ui:insert name="title">Ursula's Eierservice</ui:insert></title>
+</h:head>
+
+<h:body>
+
+	<div>
+		<div class="w3-container w3-green">
+		    <ui:insert name="top">
+		    	<h2 class="w3-text-sand w3-center">
+		    		<b>Ursula's Eierservice</b></h2>
+		    </ui:insert>
+		</div>
+		
+		<div>
+			<c:choose>
+				<c:when test="#{kundenVerwaltungController.dialogModus=='KUNDE_ERFASSEN'
+				                or kundenVerwaltungController.dialogModus=='KUNDE_MUTIEREN'}">
+	
+						<!-- Menu disabled -->
+	
+				 	<ui:insert name="left">
+				 	
+ 
+				 	</ui:insert>
+	
+	
+				
+			 	</c:when>
+			 	<c:otherwise>
+			 	
+					<!-- Menu not disabled -->
+			 	
+				 	<ui:insert name="left">
+				 		<h:form>
+			 	
+							<!-- CSS large screen (responsive design) -->
+			 	
+					 		<ul class="w3-navbar w3-large w3-light-green">
+								<li class="w3-hide-medium w3-hide-large w3-opennav w3-left">
+								  <a class="w3-hover-lime" href="javascript:void(0);" onclick="menueExpand()">Menu</a>
+								</li>
+								<li class="w3-hide-small">
+									<h:commandLink 	styleClass="w3-hover-lime"
+														value="Bestellen"
+														action="#{bestellungVerwaltungController.startBestellungErfassen()}" 
+											 			/>
+								</li>
+								<li class="w3-hide-small">
+									<h:commandLink 	styleClass="w3-hover-lime"
+														value="Bestellungen"
+														rendered="#{!benutzerBean.istAdministrator}"
+														action="#{bestellungVerwaltungController.startBestellungenKundeOffen()}" 
+											 			/>
+								</li>
+								<li class="w3-hide-small">
+									<h:commandLink 	styleClass="w3-hover-lime"
+														value="Benutzerkonto"
+														rendered="#{!benutzerBean.istAdministrator}"
+														action="#{kundenVerwaltungController.startBenutzerKontoMutieren()}" 
+											 			/>
+								</li>
+								<li class="w3-hide-small">
+									<h:commandLink 	styleClass="w3-hover-lime"
+														value="Best&auml;tigen"
+														rendered="#{benutzerBean.istAdministrator}"
+														action="#{bestellungVerwaltungController.startBestellungBestaetigen()}" 
+											 			/>
+								</li>
+								<li class="w3-hide-small">
+									<h:commandLink 	styleClass="w3-hover-lime"
+														value="Liefern"
+														rendered="#{benutzerBean.istAdministrator}"
+														action="#{bestellungVerwaltungController.startBestellungLiefern()}" 
+											 			/>
+								</li>
+								<li class="w3-hide-small">
+									<h:commandLink 	styleClass="w3-hover-lime"
+														value="Offene Zahlungen"
+														rendered="#{benutzerBean.istAdministrator}"
+														action="#{bestellungVerwaltungController.startBezahlungOffen()}" 
+											 			/>
+								</li>
+								<li class="w3-hide-small">
+					 				<h:commandLink	styleClass="w3-hover-lime"
+					 									value="Benutzerverwaltung"
+					 									action="#{benutzerVerwaltungController.startBenutzerVerwaltung()}"
+					 									rendered="#{benutzerBean.istAdministrator}"/>								 
+								</li>
+								<li class="w3-hide-small">
+									<h:commandLink 	styleClass="w3-hover-lime"
+														value="Kundenverwaltung" 
+														action="#{kundenVerwaltungController.startKundenVerwaltung()}"
+														rendered="#{benutzerBean.istAdministrator}"/>
+								</li>
+								<li class="w3-hide-small">
+									<h:link			styleClass="w3-hover-lime"								
+														value="Kontakt" 
+														outcome="kontakt.xhtml"
+														/>
+								</li>
+								<li class="w3-hide-small">
+									<h:commandLink   styleClass="w3-hover-lime"
+													 value="Logout" 
+													 action="#{authController.logout()}"
+													 />
+								</li>
+							</ul>
+			 	
+							<!-- CSS small screen (responsive design) -->
+			 				<div id="demo" class="w3-hide w3-hide-large w3-hide-medium">
+					 		<ul class="w3-navbar w3-left-align w3-large w3-black">
+								<li>
+									<h:commandLink 	
+														value="Bestellen"
+														action="#{bestellungVerwaltungController.startBestellungErfassen()}" 
+											 			/>
+								</li>
+								<li>
+									<h:commandLink 	
+														value="Bestellungen"
+														rendered="#{!benutzerBean.istAdministrator}"
+														action="#{bestellungVerwaltungController.startBestellungenKundeOffen()}" 
+											 			/>
+								</li>
+								<li>
+									<h:commandLink 	
+														value="Benutzerkonto"
+														rendered="#{!benutzerBean.istAdministrator}"
+														action="#{kundenVerwaltungController.startBenutzerKontoMutieren()}" 
+											 			/>
+								</li>
+								<li>
+									<h:commandLink 	
+														value="Best&auml;tigen"
+														rendered="#{benutzerBean.istAdministrator}"
+														action="#{bestellungVerwaltungController.startBestellungBestaetigen()}" 
+											 			/>
+								</li>
+								<li>
+									<h:commandLink 	
+														value="Liefern"
+														rendered="#{benutzerBean.istAdministrator}"
+														action="#{bestellungVerwaltungController.startBestellungLiefern()}" 
+											 			/>
+								</li>
+								<li>
+									<h:commandLink 	
+														value="Offene Zahlungen"
+														rendered="#{benutzerBean.istAdministrator}"
+														action="#{bestellungVerwaltungController.startBezahlungOffen()}" 
+											 			/>
+								</li>
+								<li>
+					 				<h:commandLink	
+					 									value="Benutzerverwaltung"
+					 									action="#{benutzerVerwaltungController.startBenutzerVerwaltung()}"
+					 									rendered="#{benutzerBean.istAdministrator}"/>								 
+								</li>
+								<li>
+									<h:commandLink 	
+														value="Kundenverwaltung" 
+														action="#{kundenVerwaltungController.startKundenVerwaltung()}"
+														rendered="#{benutzerBean.istAdministrator}"/>
+								</li>
+								<li>
+									<h:link										
+														value="Kontakt" 
+														outcome="kontakt.xhtml"
+														/>
+								</li>
+								<li>
+									<h:commandLink   
+													 value="Logout" 
+													 action="#{authController.logout()}"
+													 />
+								</li>
+							</ul>
+							</div>
+						</h:form>	
+	
+				 	</ui:insert>
+			 	
+			 	</c:otherwise>
+			 </c:choose>
+		 </div>
+		
+		<div class="w3-display-container"
+					  >
+		      <ui:insert name="content">Content</ui:insert>
+		</div>
+		
+		<div id="bottom"  >
+		 	<ui:insert name="footer">
+			 	<div class="w3-container w3-green w3-center">
+			 	<p class="w3-text-sand">designed by s.leden</p>
+			 	</div>
+		 	</ui:insert>
+		</div>
+		
+		<div class="w3-container w3-green"  >
+		 	<ui:insert name="belowBottom">
+		 	</ui:insert>
+		</div>
+	</div>
+</h:body>	
+</html>
