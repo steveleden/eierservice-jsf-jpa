@@ -47,13 +47,13 @@
 			</h:dataTable>
 		</div>
 		<h:messages styleClass="messages" layout="table"/>
-		<h:commandButton action="#{benutzerVerwaltungController.gotoBenutzerErfassen()}" value="Neuer Benutzer" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZER_VERWALTUNG'}"
+		<h:commandButton action="#{benutzerVerwaltungController.gotoBenutzerErfassen}" value="Neuer Benutzer" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZER_VERWALTUNG'}"
 						 styleClass="normalButton"/>
 		<h:commandButton action="#{benutzerVerwaltungController.gotoBenutzerMutieren}" value="Benutzer mutieren" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZER_VERWALTUNG'}"
 						 styleClass="normalButton"/>
-		<h:commandButton action="#{benutzerVerwaltungController.benutzerLoeschen()}" value="selektierte löschen" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZER_VERWALTUNG'}"
+		<h:commandButton action="#{benutzerVerwaltungController.benutzerLoeschen}" value="selektierte löschen" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZER_VERWALTUNG'}"
 						 styleClass="normalButton"/>
-		<h:commandButton action="#{kundenVerwaltungController.benutzerAusgewaehlt()}" value="Benutzer ausw&auml;hlen" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZERWAHL_FUER_KUNDE'}"
+		<h:commandButton action="#{kundenVerwaltungController.benutzerAusgewaehlt}" value="Benutzer ausw&auml;hlen" rendered="#{benutzerListeViewBean.dialogModus=='BENUTZERWAHL_FUER_KUNDE'}"
 						 styleClass="normalButton"/>
 		</h:form>
 		</ui:define>

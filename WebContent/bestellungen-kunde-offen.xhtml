@@ -119,10 +119,10 @@
 			<h:messages styleClass="messages" layout="table"/>
 			<h:outputLabel value="Es k&ouml;nnen nur Bestellungen mit Status 'bestellt' mutiert werden." />
 			<br />
-			<h:commandButton action="#{bestellungVerwaltungController.bestellungGewaehltMutieren()}" value="Bestellung mutieren"
+			<h:commandButton action="#{bestellungVerwaltungController.bestellungGewaehltMutieren}" value="Bestellung mutieren"
 							 disabled="#{!bestellungListeViewBean.statusBestelltVorhanden}"
 							 styleClass="normalButton"/>
-			<h:commandButton action="#{bestellungVerwaltungController.bestellungStorieren()}" value="Bestellung stornieren"
+			<h:commandButton action="#{bestellungVerwaltungController.bestellungStorieren}" value="Bestellung stornieren"
 							 disabled="#{!bestellungListeViewBean.statusBestelltVorhanden}"
 							 styleClass="normalButton"/>
 		</h:form>

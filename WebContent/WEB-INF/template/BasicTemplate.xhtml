@@ -29,7 +29,7 @@
 	<h:outputStylesheet library="css" name="datagrid.css"></h:outputStylesheet>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<f:metadata>
-	    <f:event type="preRenderView" listener="#{benutzerBean.checkAuthorisiert()}" />
+	    <f:event type="preRenderView" listener="#{benutzerBean.checkAuthorisiert}" />
 	</f:metadata> 	<title><ui:insert name="title">Ursula's Eierservice</ui:insert></title>
 </h:head>
 
@@ -74,54 +74,54 @@
 								<li class="w3-hide-small">
 									<h:commandLink 	styleClass="w3-hover-lime"
 														value="Bestellen"
-														action="#{bestellungVerwaltungController.startBestellungErfassen()}" 
+														action="#{bestellungVerwaltungController.startBestellungErfassen}" 
 											 			/>
 								</li>
 								<li class="w3-hide-small">
 									<h:commandLink 	styleClass="w3-hover-lime"
 														value="Bestellungen"
 														rendered="#{!benutzerBean.istAdministrator}"
-														action="#{bestellungVerwaltungController.startBestellungenKundeOffen()}" 
+														action="#{bestellungVerwaltungController.startBestellungenKundeOffen}" 
 											 			/>
 								</li>
 								<li class="w3-hide-small">
 									<h:commandLink 	styleClass="w3-hover-lime"
 														value="Benutzerkonto"
 														rendered="#{!benutzerBean.istAdministrator}"
-														action="#{kundenVerwaltungController.startBenutzerKontoMutieren()}" 
+														action="#{kundenVerwaltungController.startBenutzerKontoMutieren}" 
 											 			/>
 								</li>
 								<li class="w3-hide-small">
 									<h:commandLink 	styleClass="w3-hover-lime"
 														value="Best&auml;tigen"
 														rendered="#{benutzerBean.istAdministrator}"
-														action="#{bestellungVerwaltungController.startBestellungBestaetigen()}" 
+														action="#{bestellungVerwaltungController.startBestellungBestaetigen}" 
 											 			/>
 								</li>
 								<li class="w3-hide-small">
 									<h:commandLink 	styleClass="w3-hover-lime"
 														value="Liefern"
 														rendered="#{benutzerBean.istAdministrator}"
-														action="#{bestellungVerwaltungController.startBestellungLiefern()}" 
+														action="#{bestellungVerwaltungController.startBestellungLiefern}" 
 											 			/>
 								</li>
 								<li class="w3-hide-small">
 									<h:commandLink 	styleClass="w3-hover-lime"
 														value="Offene Zahlungen"
 														rendered="#{benutzerBean.istAdministrator}"
-														action="#{bestellungVerwaltungController.startBezahlungOffen()}" 
+														action="#{bestellungVerwaltungController.startBezahlungOffen}" 
 											 			/>
 								</li>
 								<li class="w3-hide-small">
 					 				<h:commandLink	styleClass="w3-hover-lime"
 					 									value="Benutzerverwaltung"
-					 									action="#{benutzerVerwaltungController.startBenutzerVerwaltung()}"
+					 									action="#{benutzerVerwaltungController.startBenutzerVerwaltung}"
 					 									rendered="#{benutzerBean.istAdministrator}"/>								 
 								</li>
 								<li class="w3-hide-small">
 									<h:commandLink 	styleClass="w3-hover-lime"
 														value="Kundenverwaltung" 
-														action="#{kundenVerwaltungController.startKundenVerwaltung()}"
+														action="#{kundenVerwaltungController.startKundenVerwaltung}"
 														rendered="#{benutzerBean.istAdministrator}"/>
 								</li>
 								<li class="w3-hide-small">
@@ -133,7 +133,7 @@
 								<li class="w3-hide-small">
 									<h:commandLink   styleClass="w3-hover-lime"
 													 value="Logout" 
-													 action="#{authController.logout()}"
+													 action="#{authController.logout}"
 													 />
 								</li>
 							</ul>
@@ -144,54 +144,54 @@
 								<li>
 									<h:commandLink 	
 														value="Bestellen"
-														action="#{bestellungVerwaltungController.startBestellungErfassen()}" 
+														action="#{bestellungVerwaltungController.startBestellungErfassen}" 
 											 			/>
 								</li>
 								<li>
 									<h:commandLink 	
 														value="Bestellungen"
 														rendered="#{!benutzerBean.istAdministrator}"
-														action="#{bestellungVerwaltungController.startBestellungenKundeOffen()}" 
+														action="#{bestellungVerwaltungController.startBestellungenKundeOffen}" 
 											 			/>
 								</li>
 								<li>
 									<h:commandLink 	
 														value="Benutzerkonto"
 														rendered="#{!benutzerBean.istAdministrator}"
-														action="#{kundenVerwaltungController.startBenutzerKontoMutieren()}" 
+														action="#{kundenVerwaltungController.startBenutzerKontoMutieren}" 
 											 			/>
 								</li>
 								<li>
 									<h:commandLink 	
 														value="Best&auml;tigen"
 														rendered="#{benutzerBean.istAdministrator}"
-														action="#{bestellungVerwaltungController.startBestellungBestaetigen()}" 
+														action="#{bestellungVerwaltungController.startBestellungBestaetigen}" 
 											 			/>
 								</li>
 								<li>
 									<h:commandLink 	
 														value="Liefern"
 														rendered="#{benutzerBean.istAdministrator}"
-														action="#{bestellungVerwaltungController.startBestellungLiefern()}" 
+														action="#{bestellungVerwaltungController.startBestellungLiefern}" 
 											 			/>
 								</li>
 								<li>
 									<h:commandLink 	
 														value="Offene Zahlungen"
 														rendered="#{benutzerBean.istAdministrator}"
-														action="#{bestellungVerwaltungController.startBezahlungOffen()}" 
+														action="#{bestellungVerwaltungController.startBezahlungOffen}" 
 											 			/>
 								</li>
 								<li>
 					 				<h:commandLink	
 					 									value="Benutzerverwaltung"
-					 									action="#{benutzerVerwaltungController.startBenutzerVerwaltung()}"
+					 									action="#{benutzerVerwaltungController.startBenutzerVerwaltung}"
 					 									rendered="#{benutzerBean.istAdministrator}"/>								 
 								</li>
 								<li>
 									<h:commandLink 	
 														value="Kundenverwaltung" 
-														action="#{kundenVerwaltungController.startKundenVerwaltung()}"
+														action="#{kundenVerwaltungController.startKundenVerwaltung}"
 														rendered="#{benutzerBean.istAdministrator}"/>
 								</li>
 								<li>
@@ -203,7 +203,7 @@
 								<li>
 									<h:commandLink   
 													 value="Logout" 
-													 action="#{authController.logout()}"
+													 action="#{authController.logout}"
 													 />
 								</li>
 							</ul>

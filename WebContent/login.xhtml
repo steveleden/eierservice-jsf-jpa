@@ -21,7 +21,7 @@
 			        <h:form class="w3-hide-medium w3-hide-large w3-padding-8">
 			            <a id="btn-login" 
 			              		class="w3-btn w3-green w3-border w3-border-white w3-text-white"
-			                    href="javascript:void(0);" onclick="showLoginExpanded()">
+			                    href="javascript:void(0);" onclick="showLoginExpanded">
 			                Login
 			            </a>
 			        </h:form>
@@ -51,7 +51,7 @@
 							<h:panelGroup>
 							    <h:commandButton 
 					        			value="Login" 
-					        			action="#{authController.login()}"
+					        			action="#{authController.login}"
 					        			styleClass="w3-btn w3-green w3-border w3-border-white w3-text-white"/>
 			         		</h:panelGroup>
 			         		<h:panelGrid></h:panelGrid>
@@ -102,7 +102,7 @@
 						</h:panelGrid>
 					    <h:commandButton 
 			        			value="Login" 
-			        			action="#{authController.login()}"
+			        			action="#{authController.login}"
 			        			styleClass="w3-btn w3-green w3-border w3-border-white w3-text-white"/>
 			        	
 			        </h:form>

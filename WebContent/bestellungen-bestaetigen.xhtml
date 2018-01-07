@@ -54,12 +54,12 @@
 				</h:dataTable>
 			</div>
 			<h:messages styleClass="messages" layout="table"/>
-			<h:commandButton action="#{bestellungVerwaltungController.gotoBestaetigen()}" value="Liefertermin best&auml;tigen"
+			<h:commandButton action="#{bestellungVerwaltungController.gotoBestaetigen}" value="Liefertermin best&auml;tigen"
 							 styleClass="normalButton"/>
-			<h:commandButton action="#{bestellungVerwaltungController.bestaetigteBestellungenEinblenden()}" value="best&auml;tigte Lieferungen einblenden"
+			<h:commandButton action="#{bestellungVerwaltungController.bestaetigteBestellungenEinblenden}" value="best&auml;tigte Lieferungen einblenden"
 							 rendered="#{bestellungVerwaltungController.dialogModus=='NEUTRAL'}"
 							 styleClass="normalButton"/> 
-			<h:commandButton action="#{bestellungVerwaltungController.bestaetigteBestellungenAusblenden()}" value="best&auml;tigte Lieferungen ausblenden"
+			<h:commandButton action="#{bestellungVerwaltungController.bestaetigteBestellungenAusblenden}" value="best&auml;tigte Lieferungen ausblenden"
 							 rendered="#{bestellungVerwaltungController.dialogModus=='BESTAETIGTE_EINBLENDEN'}"
 							 styleClass="normalButton"/> 
 		</h:form>

@@ -122,13 +122,13 @@
 					</fieldset>
 					<div class="w3-center">
 					<h:messages styleClass="messages" layout="table"/>							 
-					<h:commandButton action="#{bestellungVerwaltungController.bestellenWeiter()}" value="Weiter" styleClass="normalButton"
+					<h:commandButton action="#{bestellungVerwaltungController.bestellenWeiter}" value="Weiter" styleClass="normalButton"
 									 rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_ERFASSEN'}"/>
-					<h:commandButton action="#{bestellungVerwaltungController.bestellenSpeichern()}" value="Bestellen" styleClass="normalButton"
+					<h:commandButton action="#{bestellungVerwaltungController.bestellenSpeichern}" value="Bestellen" styleClass="normalButton"
 									 rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_BESTELLEN'}"/>
-					<h:commandButton action="#{bestellungVerwaltungController.bestellungMutierenSpeichern()}" value="Speichern" styleClass="normalButton"
+					<h:commandButton action="#{bestellungVerwaltungController.bestellungMutierenSpeichern}" value="Speichern" styleClass="normalButton"
 									 rendered="#{bestellungVerwaltungController.dialogModus=='BESTELLUNG_MUTIEREN'}"/>
-					<h:commandButton action="#{bestellungVerwaltungController.bestellenAbbruch()}" value="Abbrechen" styleClass="normalButton"
+					<h:commandButton action="#{bestellungVerwaltungController.bestellenAbbruch}" value="Abbrechen" styleClass="normalButton"
 					 				 immediate="true"/>
 					</div>
 				</h:form>

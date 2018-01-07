@@ -54,14 +54,14 @@
 			</h:dataTable>
 		</div>
 		<h:messages styleClass="messages" layout="table"/>
-		<h:commandButton action="#{kundenVerwaltungController.gotoKundeErfassen()}" value="Neuer Kunde"
+		<h:commandButton action="#{kundenVerwaltungController.gotoKundeErfassen}" value="Neuer Kunde"
 						 styleClass="normalButton"/>
-		<h:commandButton action="#{kundenVerwaltungController.gotoKundeMutieren()}" value="Kunde mutieren" 
+		<h:commandButton action="#{kundenVerwaltungController.gotoKundeMutieren}" value="Kunde mutieren" 
 						 styleClass="normalButton"/>
-		<h:commandButton action="#{kundenVerwaltungController.gotoEinzahlungErfassen()}" value="Zahlung erfassen" 
+		<h:commandButton action="#{kundenVerwaltungController.gotoEinzahlungErfassen}" value="Zahlung erfassen" 
 						 styleClass="normalButton"/>
 		<h:commandButton rendered="false"
-		                 action="#{kundenVerwaltungController.kundenLoeschen()}" value="selektierte löschen" 
+		                 action="#{kundenVerwaltungController.kundenLoeschen}" value="selektierte löschen" 
 						 styleClass="normalButton"/>
 		</h:form>
 		</ui:define>
