@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 
 @ManagedBean
 @SessionScoped
@@ -82,7 +83,7 @@ public class BenutzerBean implements Serializable {
 	}
 	
 	/* Eventhandler: Pruefen ob Benutzer authorisiert. Wenn nicht -> login.xhtml */
-	public void checkAuthorisiert () throws IOException {
+	public void checkAuthorisiert (ComponentSystemEvent e) throws IOException {
 		String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
 		if (!viewId.equalsIgnoreCase("/login.xhtml") && !this.authorisiert) {
 			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
