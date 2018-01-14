@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="passwort")
+@Table(name="passwort", schema="eggstoreprod")
 @NamedQuery(name="Passwort.findAll", query="SELECT p FROM Passwort p")
 public class Passwort implements Serializable {
 	private static final long serialVersionUID = 1L;

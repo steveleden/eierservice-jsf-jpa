@@ -60,8 +60,9 @@ public class BenutzerVerwaltungBean implements BenutzerVerwaltungInt, Serializab
 		
 		try {
 			EntityManager em = emProvider.getEntityManager();
+
 			
-			Benutzer benutzer = (Benutzer) em.createQuery("SELECT b from Benutzer b where b.name =?1")
+			Benutzer benutzer = em.createQuery("SELECT b from Benutzer b where b.name =?1", Benutzer.class)
 			        						 .setParameter(1, benutzerName.trim())
 			        						 .getSingleResult();
 			em.close();
@@ -70,6 +71,7 @@ public class BenutzerVerwaltungBean implements BenutzerVerwaltungInt, Serializab
 			/* Falls Query kein Resultat findet ... */
 			System.out.println("BenutzerVerwaltungEjb, leseBenutzerByName: Fehler beim Lesen der Benutzer");
 			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return null;
 		}
 	}
