@@ -22,7 +22,7 @@ public class PasswortAendernController implements Serializable{
 	@ManagedProperty(value="#{authorisierung}")
 	private	AuthorisierungInt auth;
 
-	void setAuth(AuthorisierungInt auth) {
+	public void setAuth(AuthorisierungInt auth) {
 		this.auth = auth;
 	}
 	
@@ -89,7 +89,7 @@ public class PasswortAendernController implements Serializable{
 	/*---------------------*/
 	
 	public String startPasswortAendern() {
-		
+
 		return "passwort-aendern";
 	}
 	
