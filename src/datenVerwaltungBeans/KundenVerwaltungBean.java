@@ -190,17 +190,23 @@ public class KundenVerwaltungBean implements KundenVerwaltungInt, Serializable {
 			if (kunde == null) {				
 				//Keine Kunde abgefüllt: alle Benutzer des Kunden löschen
 				if (kundeBisher != null) {
-					kundeBisher.setBenutzers(null);
+					List<Benutzer> benutzerList = kundeBisher.getBenutzers();
+					
+					while (!benutzerList.isEmpty()) {						
+						Benutzer b = kundeBisher.getBenutzers().get(0);
+						kundeBisher.removeBenutzer(b);
+					}
 					em.merge(kundeBisher);
+					em.flush();					
 				}
+			
 			}
 			else {
 				kunde.addBenutzer(benutzer);
 				em.merge(kunde);
 			}
-						
-			benutzer.setKunde(kunde);
-			em.merge(benutzer);
+			//benutzer.setKunde(kunde);
+			//em.merge(benutzer);
 						
 			em.getTransaction().commit();
 			em.close();

@@ -13,10 +13,10 @@
 	    <class>entity.Passwort</class>
 
 <!--         <properties> -->
-<!--             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> -->
-<!--             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://eu-cdbr-azure-west-b.cloudapp.net:3306/eggstoreprod" /> -->
-<!--             <property name="javax.persistence.jdbc.user" value="b79737b22973dd" /> -->
-<!--             <property name="javax.persistence.jdbc.password" value="d14b99b3" /> -->
+<!--             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" /> -->
+<!--             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://185.33.249.161:1433;databaseName=eggstoreprod" /> -->
+<!--             <property name="javax.persistence.jdbc.user" value="sa" /> -->
+<!--             <property name="javax.persistence.jdbc.password" value="Hurt14fer14fer" /> -->
 <!--         </properties> -->
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
